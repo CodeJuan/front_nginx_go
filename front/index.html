@@ -18,7 +18,7 @@
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body ng-app="testApp">
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -45,13 +45,14 @@
 </nav>
 <div class="container-fluid">
     <div class="row">
-        <!--<div class="col-sm-3 col-md-2 sidebar">-->
-            <!--<ul class="nav nav-sidebar">-->
-                <!--<li class="active"><a href="#/">home<span class="sr-only">(current)</span></a></li>-->
-                <!--<li><a href="#get">get</a></li>-->
-                <!--<li><a href="#post">post</a></li>-->
-            <!--</ul>-->
-        <!--</div>-->
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#/">home<span class="sr-only">(current)</span></a></li>
+                <li><a href="#get">get</a></li>
+                <li><a href="#post">post</a></li>
+            </ul>
+        </div>
+        <div class="test" ng-view></div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <button type="button" class="btn btn-default btn-lg" aria-label="Left Align">
                 <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
@@ -70,6 +71,7 @@
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/angular/angular.js"></script>
 <script src="assets/angular/angular-route.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
 
