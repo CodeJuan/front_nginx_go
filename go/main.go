@@ -38,5 +38,5 @@ func main(){
 		v1.GET("/user/:name", name)
 		v1.POST("/user", post)
 	}
-	s.Run("0.0.0.0:8080")
+	s.Run("0.0.0.0:80")
 }
