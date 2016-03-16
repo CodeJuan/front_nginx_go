@@ -18,6 +18,8 @@ func name(c *gin.Context){
 }
 
 func post(c *gin.Context){
+	fmt.Println(c)
+	fmt.Println(*c)
 	var json User
 	if c.BindJSON(&json) == nil {
 		fmt.Println(json)

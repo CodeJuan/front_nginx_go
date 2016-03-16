@@ -7,7 +7,7 @@ nginx:
     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     - ./front/:/usr/share/nginx/html/:ro
   ports:
-   - 80
+   - 32769:80
 
 backend:
   restart: always

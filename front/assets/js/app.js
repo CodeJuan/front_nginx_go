@@ -36,33 +36,17 @@ testApp.controller('getController', function($scope, $http) {
 testApp.controller('postController', function($scope, $http) {
     $scope.pageClass = 'post';
 
-
     $scope.postdata = function() {
-        $scope.input_age = '111'
-        $scope.input_name = '111'
-        var data = $.param({
-            json: JSON.stringify({
+        var data = {
                 name: $scope.input_name,
-                age: $scope.input_age,
-            })
-        });
-        $scope.input_age = '222'
-        $scope.input_name = '222'
-        var config = {
-            headers : {
-                'Content-Type': 'application/json'
+                age: parseInt($scope.input_age)
             }
-        }
-        $scope.input_age = '333'
-        $scope.input_name = '333'
-        $http.post('/api/v1/user', data, config)
+        $http.post('/api/v1/user/', data)
             .success(function (data, status, headers, config) {
-                $scope.return_val = 'success'
+                $scope.return_val = status
             })
             .error(function (data, status, header, config) {
-                $scope.return_val = 'error'
+                $scope.return_val = status
             });
-        $scope.input_age = '444'
-        $scope.input_name = '444'
     };
 });
