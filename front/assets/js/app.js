@@ -19,3 +19,11 @@ testApp.config(function($routeProvider) {
 testApp.controller('testController', function($scope) {
     $scope.pageClass = 'test';
 });
+
+testApp.controller('getController', function($scope) {
+    $scope.pageClass = 'get';
+});
+
+testApp.controller('postController', function($scope) {
+    $scope.pageClass = 'post';
+});
