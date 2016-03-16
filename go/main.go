@@ -11,10 +11,21 @@ func pingPong(c *gin.Context){
 	c.JSON(http.StatusOK, gin.H{"message":"pong"})
 }
 
+func init(){
+	Users = make(map[string]User)
+}
+
 func name(c *gin.Context){
 	name := c.Param("name")
 	fmt.Println(name)
-	c.JSON(http.StatusOK, gin.H{"name":name, "age":12})
+	val, ok := Users[name]
+	fmt.Println(ok)
+	if(ok == true){
+		c.JSON(http.StatusOK, gin.H{"name":name, "age":val.Age})
+	}else{
+		c.JSON(http.StatusNotFound, gin.H{})
+	}
+
 }
 
 func post(c *gin.Context){
@@ -23,7 +34,7 @@ func post(c *gin.Context){
 	var json User
 	if c.BindJSON(&json) == nil {
 		fmt.Println(json)
-		Users = append(Users, json)
+		Users[json.Name] = json
 		c.JSON(http.StatusOK, gin.H{"status": "added"})
 		fmt.Println(Users)
 	}else {

@@ -11,4 +11,4 @@ nginx:
 
 backend:
   restart: always
-  build: ./go
+  image: front_nginx_go:0.1.0

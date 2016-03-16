@@ -5,4 +5,4 @@ type User struct {
 	Age  int32 `json:"age"  binding:"required"`
 }
 
-var Users []User
+var Users map[string]User
