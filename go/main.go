@@ -32,6 +32,9 @@ func post(c *gin.Context){
 func main(){
 	s := gin.Default()
 
+	s.StaticFile("/", "../front/index.html")
+	s.StaticFS("/assets", http.Dir("../front/assets"))
+
 	v1 := s.Group("/api/v1")
 	{
 		v1.GET("/ping", pingPong)
