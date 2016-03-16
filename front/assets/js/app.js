@@ -28,7 +28,6 @@ testApp.controller('getController', function($scope, $http) {
             $http.get('api/v1/user/' + $scope.input_name)
                 .success(function(result) {
                     $scope.datas = result
-                    assert(result)
                 }
             );
         };
@@ -36,4 +35,34 @@ testApp.controller('getController', function($scope, $http) {
 
 testApp.controller('postController', function($scope, $http) {
     $scope.pageClass = 'post';
+
+
+    $scope.postdata = function() {
+        $scope.input_age = '111'
+        $scope.input_name = '111'
+        var data = $.param({
+            json: JSON.stringify({
+                name: $scope.input_name,
+                age: $scope.input_age,
+            })
+        });
+        $scope.input_age = '222'
+        $scope.input_name = '222'
+        var config = {
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        }
+        $scope.input_age = '333'
+        $scope.input_name = '333'
+        $http.post('/api/v1/user', data, config)
+            .success(function (data, status, headers, config) {
+                $scope.return_val = 'success'
+            })
+            .error(function (data, status, header, config) {
+                $scope.return_val = 'error'
+            });
+        $scope.input_age = '444'
+        $scope.input_name = '444'
+    };
 });
