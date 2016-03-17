@@ -24,10 +24,9 @@ testApp.controller('getController', function($scope, $http) {
     $scope.pageClass = 'get';
 
         $scope.getdata = function() {
-            $scope.data = [];
-            $http.get('api/v1/user/' + $scope.input_name)
+            $http.get('api/v1/users')
                 .success(function(result) {
-                    $scope.datas = result
+                    $scope.users = result
                 }
             );
         };

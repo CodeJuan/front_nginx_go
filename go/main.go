@@ -28,6 +28,14 @@ func name(c *gin.Context){
 
 }
 
+func GetUsers(c *gin.Context) {
+	var tmpUsers []User
+	for _, user := range Users{
+		tmpUsers = append(tmpUsers, user)
+	}
+	c.JSON(http.StatusOK, tmpUsers)
+}
+
 func post(c *gin.Context){
 	fmt.Println(c)
 	fmt.Println(*c)
@@ -52,6 +60,7 @@ func main(){
 	{
 		v1.GET("/ping", pingPong)
 		v1.GET("/user/:name", name)
+		v1.GET("/users", GetUsers)
 		v1.POST("/user", post)
 	}
 	s.Run("0.0.0.0:80")
