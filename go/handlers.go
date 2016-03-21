@@ -52,11 +52,8 @@ func post(c *gin.Context){
 }
 
 func get_route_by_name(c *gin.Context){
-	name := c.Param("name")
+	name := c.DefaultQuery("name", "高新3号线")
 	name = strings.TrimSpace(name)
-	if (name == ""){
-		name = "高新3号线"
-	}
 
 	url := "http://113.140.71.252:9091/xa_gj_mobile_provide/getBusStartEndStationByRouteName.action?routeName=" +
 			name

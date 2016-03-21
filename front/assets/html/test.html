@@ -22,9 +22,10 @@
             </tr>
         </thead>
         <tr ng-repeat="x in routes.data">
-            <td>{{ x.routeId }}</td>
-            <td>{{ x.routeName }}</td>
-            <td>{{ x.startEndStation }}</td>
+            <td><button type="button" class="btn btn-link btn-sm" ng-click="show_bus(x.routeId)">{{ x.routeId }}</button></td>>
+            <td><button type="button" class="btn btn-link btn-sm" ng-click="show_bus(x.routeId)">{{ x.routeName }}</button></td>>
+            <td><button type="button" class="btn btn-link btn-sm" ng-click="show_bus(x.routeId)">{{ x.startEndStation }}</button></td>>
         </tr>
     </table>
+    {{curID}}
 </div>

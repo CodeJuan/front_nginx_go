@@ -20,7 +20,7 @@ func main(){
 		v1.GET("/user/:name", name)
 		v1.GET("/users", GetUsers)
 		v1.POST("/user", post)
-		v1.GET("/routes/:name", get_route_by_name)
+		v1.GET("/routes", get_route_by_name)
 	}
 	s.Run("0.0.0.0:80")
 }
