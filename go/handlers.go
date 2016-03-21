@@ -3,6 +3,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"fmt"
+	"io/ioutil"
+	"strings"
 )
 
 
@@ -51,5 +53,27 @@ func post(c *gin.Context){
 
 func get_route_by_name(c *gin.Context){
 	name := c.Param("name")
-	c.JSON(http.StatusOK, gin.H{"name": name})
+	name = strings.TrimSpace(name)
+	if (name == ""){
+		name = "高新3号线"
+	}
+
+	url := "http://113.140.71.252:9091/xa_gj_mobile_provide/getBusStartEndStationByRouteName.action?routeName=" +
+			name
+
+	response, err := http.Get(url)
+
+	if err != nil {
+		fmt.Printf("%s", err)
+		panic(err)
+	} else {
+		defer response.Body.Close()
+		contents, err := ioutil.ReadAll(response.Body)
+		if err != nil {
+			fmt.Printf("%s", err)
+			panic(err)
+		}
+		c.String(http.StatusOK, string(contents))
+	}
+
 }

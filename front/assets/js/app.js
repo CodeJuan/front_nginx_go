@@ -22,7 +22,7 @@ testApp.controller('testController', function($scope, $http) {
     $scope.get_route_by_name = function() {
         $http.get('api/v1/routes/' + $scope.input_name)
         .success(function(result) {
-                $scope.name = result.name
+                $scope.routes = result
             }
         );
     };
