@@ -16,8 +16,16 @@ testApp.config(function($routeProvider) {
         });
 });
 
-testApp.controller('testController', function($scope) {
+testApp.controller('testController', function($scope, $http) {
     $scope.pageClass = 'test';
+
+    $scope.get_route_by_name = function() {
+        $http.get('api/v1/routes/' + $scope.input_name)
+        .success(function(result) {
+                $scope.name = result.name
+            }
+        );
+    };
 });
 
 testApp.controller('getController', function($scope, $http) {

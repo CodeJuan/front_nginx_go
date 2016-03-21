@@ -4,7 +4,9 @@
     <span class="input-group-addon" id="basic-addon1">请输入线路名称</span>
     <input type="text" class="form-control" placeholder="高新3号线" aria-describedby="basic-addon1" ng-model="input_name">
 
-    <button type="button" class="btn btn-default btn-lg" aria-label="Left Align">
+    <button type="button" class="btn btn-default btn-lg" aria-label="Left Align" ng-click="get_route_by_name()">
         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
     </button>
+
+    {{name}}
 </div>
