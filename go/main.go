@@ -21,6 +21,7 @@ func main(){
 		v1.GET("/users", GetUsers)
 		v1.POST("/user", post)
 		v1.GET("/routes", get_route_by_name)
+		v1.GET("/routeID", get_route_by_id)
 	}
 	s.Run("0.0.0.0:80")
 }
