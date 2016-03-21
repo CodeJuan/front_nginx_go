@@ -13,4 +13,18 @@
     状态:{{routes.message}}
     线路数量:{{routes.totalCount}}
     线路状态:{{routes.status}}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>线路ID</th>
+                <th>线路名</th>
+                <th>起点-终点</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="x in routes.data">
+            <td>{{ x.routeId }}</td>
+            <td>{{ x.routeName }}</td>
+            <td>{{ x.startEndStation }}</td>
+        </tr>
+    </table>
 </div>
