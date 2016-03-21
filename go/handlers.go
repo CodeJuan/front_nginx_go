@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"strings"
+	"github.com/bitly/go-simplejson"
+	"bytes"
 )
 
 
@@ -89,9 +91,39 @@ func get_route_by_id(c *gin.Context) {
 	id := c.DefaultQuery("id", "6345")
 
 	url := API_URL + "xa_gj_mobile_provide/getStationByRouteId.action?routeId=" + id
-	contents, err := get_bus_provide(url)
-	if err == nil {
-		c.String(http.StatusOK, string(contents))
+	route_byte, err := get_bus_provide(url)
+	if err != nil {
+		c.String(http.StatusOK, "")
 	}
-	c.String(http.StatusOK, "")
+
+	route, err := simplejson.NewFromReader(bytes.NewBuffer(route_byte))
+	if err != nil {
+		c.String(http.StatusOK, "")
+	}
+	fmt.Println(route)
+
+	// 这里假定up是0，down是1
+//	up_url := API_URL + "xa_gj_mobile_provide/getNumberPlateStationIdByRouteIdRunningType.action?routeId="
+//	up_url += id + "&runningType="
+//	down_url := up_url + "0"
+//	up_url += "1"
+//	upBus_byte, err := get_bus_provide(up_url)
+//	if err != nil {
+//		c.String(http.StatusOK, "")
+//	}
+//	downBus_byte, err := get_bus_provide(down_url)
+//	if err != nil {
+//		c.String(http.StatusOK, "")
+//	}
+//
+//	upBus, err := simplejson.NewFromReader(bytes.NewBuffer(upBus_byte))
+//	if err != nil {
+//		c.String(http.StatusOK, "")
+//	}
+//	downBus, err := simplejson.NewFromReader(bytes.NewBuffer(downBus_byte))
+//	if err != nil {
+//		c.String(http.StatusOK, "")
+//	}
+
+	c.JSON(http.StatusOK, route)
 }
