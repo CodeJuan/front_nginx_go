@@ -32,8 +32,8 @@ testApp.controller('testController', function($scope, $http) {
             $http.get('api/v1/routeID?id=' + routeID)
             .success(function(result) {
                     $scope.route_details = result
-                    $scope.downData = result.data[0].downData
-                    $scope.upData = result.data[0].upData
+                    $scope.downData = result.downData
+                    $scope.upData = result.upData
                 }
             );
         };
