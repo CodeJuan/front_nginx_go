@@ -29,11 +29,13 @@ testApp.controller('testController', function($scope, $http) {
 
     $scope.show_bus = function(routeID) {
         $scope.curID = routeID
-//            $http.get('api/v1/routes?name=' + $scope.input_name)
-//            .success(function(result) {
-//
-//                }
-//            );
+            $http.get('api/v1/routeID?id=' + routeID)
+            .success(function(result) {
+                    $scope.route_details = result
+                    $scope.downData = result.data[0].downData
+                    $scope.upData = result.data[0].upData
+                }
+            );
         };
 });
 

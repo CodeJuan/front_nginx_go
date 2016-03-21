@@ -27,5 +27,35 @@
             <td><button type="button" class="btn btn-link btn-sm" ng-click="show_bus(x.routeId)">{{ x.startEndStation }}</button></td>>
         </tr>
     </table>
-    {{curID}}
 </div>
+
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>站名</th>
+        <th>车</th>
+    </tr>
+    </thead>
+    <tr ng-repeat="x in downData">
+        <td>{{x.orderNumber}}</td>
+        <td>{{x.stationName}}</td>
+        <td></td>
+    </tr>
+</table>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>站名</th>
+        <th>车</th>
+    </tr>
+    </thead>
+    <tr ng-repeat="x in upData">
+        <td>{{x.orderNumber}}</td>
+        <td>{{x.stationName}}</td>
+        <td></td>
+    </tr>
+</table>
+{{route_details}}
