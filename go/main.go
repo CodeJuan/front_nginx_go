@@ -54,6 +54,7 @@ func main(){
 	s := gin.Default()
 
 	s.StaticFile("/", "../front/index.html")
+	s.StaticFile("/favicon.ico", "../front/favicon.ico")
 	s.StaticFS("/assets", http.Dir("../front/assets"))
 
 	v1 := s.Group("/api/v1")
