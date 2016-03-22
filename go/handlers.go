@@ -106,8 +106,8 @@ func get_route_by_id(c *gin.Context) {
 	// 这里假定up是1，down是0
 	up_url := API_URL + "xa_gj_mobile_provide/getNumberPlateStationIdByRouteIdRunningType.action?routeId="
 	up_url += id + "&runningType="
-	down_url := up_url + "0"
-	up_url += "1"
+	down_url := up_url + "1"
+	up_url += "0"
 	upBus_byte, err := get_bus_provide(up_url)
 	if err != nil {
 		c.String(http.StatusOK, "")
@@ -160,7 +160,7 @@ func get_route_by_id(c *gin.Context) {
 		station.StationID, _ = vv["stationId"].(json.Number).Int64()
 		station.StationName = vv["stationName"].(string)
 		for iBus, _ := range upBus{
-			vBus := downBusResponse.Get("data").GetIndex(iBus).MustMap()
+			vBus := upBusResponse.Get("data").GetIndex(iBus).MustMap()
 			busstationID, _ := vBus["stationId"].(json.Number).Int64()
 			if (busstationID == station.StationID){
 				station.CountOfBus += 1
