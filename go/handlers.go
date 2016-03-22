@@ -12,6 +12,7 @@ import (
 
 
 const API_URL = "http://113.140.71.252:9091/"
+//http://113.140.71.252:9091/xa_gj_mobile_provide/
 
 func pingPong(c *gin.Context){
 	c.JSON(http.StatusOK, gin.H{"message":"pong"})
@@ -102,7 +103,7 @@ func get_route_by_id(c *gin.Context) {
 		c.String(http.StatusOK, "")
 	}
 
-	// 这里假定up是0，down是1
+	// 这里假定up是1，down是0
 	up_url := API_URL + "xa_gj_mobile_provide/getNumberPlateStationIdByRouteIdRunningType.action?routeId="
 	up_url += id + "&runningType="
 	down_url := up_url + "0"
