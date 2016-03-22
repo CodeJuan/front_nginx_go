@@ -19,10 +19,10 @@
             </tr>
         </thead>
         <tr ng-repeat="x in routes.data">
-            <td>{{ x.routeId }}</td>>
-            <td>{{ x.routeName }}</td>>
-            <td>{{ x.startEndStation }}</td>>
-            <td><button type="button" class="btn btn-link btn-xs" ng-click="show_bus(x.routeId)">查看站点详情及公交车位置</button></td>>
+            <td>{{ x.routeId }}</td>
+            <td>{{ x.routeName }}</td>
+            <td>{{ x.startEndStation }}</td>
+            <td><button type="button" class="btn btn-link btn-xs" ng-click="show_bus(x.routeId)">查看站点详情及公交车位置</button></td>
         </tr>
     </table>
 </div>
@@ -32,7 +32,7 @@
             <thead>
             <tr>
                 <th>序号</th>
-                <th>站名(上行)</th>
+                <th>站名(下行)</th>
                 <th>公交车位置</th>
             </tr>
             </thead>
@@ -50,7 +50,7 @@
             <thead>
             <tr>
                 <th>序号</th>
-                <th>站名(下行)</th>
+                <th>站名(上行)</th>
                 <th>公交车位置</th>
             </tr>
             </thead>
