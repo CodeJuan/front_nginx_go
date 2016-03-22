@@ -35,13 +35,15 @@
     <tr>
         <th>序号</th>
         <th>站名</th>
-        <th>车</th>
+        <th>公交车位置</th>
     </tr>
     </thead>
     <tr ng-repeat="x in downData">
         <td>{{x.OrderNumber}}</td>
         <td>{{x.StationName}}</td>
-        <td>{{x.CountOfBus}}</td>
+        <td>
+            <img class="img-responsive" alt="Chania" ng-src="assets/img/emoji_bus.png"  ng-show="x.CountOfBus>0">
+        </td>
     </tr>
 </table>
 <table class="table table-bordered">
@@ -49,12 +51,14 @@
     <tr>
         <th>序号</th>
         <th>站名</th>
-        <th>车</th>
+        <th>公交车位置</th>
     </tr>
     </thead>
     <tr ng-repeat="x in upData">
         <td>{{x.OrderNumber}}</td>
         <td>{{x.StationName}}</td>
-        <td>{{x.CountOfBus}}</td>
+        <td>
+            <img class="img-responsive" alt="Chania" ng-src="assets/img/emoji_bus.png"  ng-show="x.CountOfBus>0">
+        </td>
     </tr>
 </table>
