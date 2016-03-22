@@ -40,6 +40,8 @@ testApp.controller('testController', function($scope, $http) {
 
     $scope.show_bus = function(routeID) {
         $scope.curID = routeID
+        $scope.downData = {}
+        $scope.upData = {}
             $http.get('api/v1/routeID?id=' + routeID)
             .success(function(result) {
                     $scope.route_details = result
