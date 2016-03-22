@@ -18,8 +18,19 @@ testApp.config(function($routeProvider) {
 
 testApp.controller('testController', function($scope, $http) {
     $scope.pageClass = 'test';
+    $scope.routes = {}
+    $scope.downData = {}
+    $scope.upData = {}
+
+    $scope.checkObject = function(obj) {
+        return angular.equals({}, obj);
+    };
 
     $scope.get_route_by_name = function() {
+        $scope.routes = {}
+        $scope.downData = {}
+        $scope.upData = {}
+
         $http.get('api/v1/routes?name=' + $scope.input_name)
         .success(function(result) {
                 $scope.routes = result

@@ -8,57 +8,61 @@
         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
     </button>
 </div>
-
 <div>
-    状态:{{routes.message}}
-    线路数量:{{routes.totalCount}}
-    线路状态:{{routes.status}}
-    <table class="table table-bordered">
+    <table class="table table-bordered" ng-show="!checkObject(routes)">
         <thead>
             <tr>
                 <th>线路ID</th>
                 <th>线路名</th>
                 <th>起点-终点</th>
+                <th>操作</th>
             </tr>
         </thead>
         <tr ng-repeat="x in routes.data">
-            <td><button type="button" class="btn btn-link btn-sm" ng-click="show_bus(x.routeId)">{{ x.routeId }}</button></td>>
-            <td><button type="button" class="btn btn-link btn-sm" ng-click="show_bus(x.routeId)">{{ x.routeName }}</button></td>>
-            <td><button type="button" class="btn btn-link btn-sm" ng-click="show_bus(x.routeId)">{{ x.startEndStation }}</button></td>>
+            <td>{{ x.routeId }}</td>>
+            <td>{{ x.routeName }}</td>>
+            <td>{{ x.startEndStation }}</td>>
+            <td><button type="button" class="btn btn-link btn-xs" ng-click="show_bus(x.routeId)">查看站点详情及公交车位置</button></td>>
         </tr>
     </table>
 </div>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-bordered" ng-show="!checkObject(downData)">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>站名(上行)</th>
+                <th>公交车位置</th>
+            </tr>
+            </thead>
+            <tr ng-repeat="x in downData">
+                <td>{{x.OrderNumber}}</td>
+                <td>{{x.StationName}}</td>
+                <td>
+                    <img class="img-responsive" alt="Chania" width="20" height="15" ng-src="assets/img/emoji_bus.png"  ng-show="x.CountOfBus>0">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <table class="table table-bordered" ng-show="!checkObject(upData)">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>站名(下行)</th>
+                <th>公交车位置</th>
+            </tr>
+            </thead>
+            <tr ng-repeat="x in upData">
+                <td>{{x.OrderNumber}}</td>
+                <td>{{x.StationName}}</td>
+                <td>
+                    <img class="img-responsive" alt="Chania" width="20" height="15" ng-src="assets/img/emoji_bus.png"  ng-show="x.CountOfBus>0">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 
 
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th>序号</th>
-        <th>站名</th>
-        <th>公交车位置</th>
-    </tr>
-    </thead>
-    <tr ng-repeat="x in downData">
-        <td>{{x.OrderNumber}}</td>
-        <td>{{x.StationName}}</td>
-        <td>
-            <img class="img-responsive" alt="Chania" width="20" height="15" ng-src="assets/img/emoji_bus.png"  ng-show="x.CountOfBus>0">
-        </td>
-    </tr>
-</table>
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th>序号</th>
-        <th>站名</th>
-        <th>公交车位置</th>
-    </tr>
-    </thead>
-    <tr ng-repeat="x in upData">
-        <td>{{x.OrderNumber}}</td>
-        <td>{{x.StationName}}</td>
-        <td>
-            <img class="img-responsive" alt="Chania" width="20" height="15" ng-src="assets/img/emoji_bus.png"  ng-show="x.CountOfBus>0">
-        </td>
-    </tr>
-</table>
