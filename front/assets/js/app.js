@@ -13,6 +13,10 @@ testApp.config(function($routeProvider) {
         .when('/post', {
             templateUrl: 'assets/html/post.html',
             controller: 'postController'
+        })
+        .when('/bootstrap_test', {
+            templateUrl: 'assets/html/bootstrap_test.html',
+            controller: 'bootstrap_testController'
         });
 });
 
@@ -80,4 +84,8 @@ testApp.controller('postController', function($scope, $http) {
                 $scope.return_val = status
             });
     };
+});
+
+testApp.controller('bootstrap_testController', function($scope, $http) {
+    $scope.pageClass = 'bootstrap_test'
 });
