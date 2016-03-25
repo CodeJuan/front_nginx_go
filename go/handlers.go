@@ -8,11 +8,17 @@ import (
 	"github.com/bitly/go-simplejson"
 	"bytes"
 	"encoding/json"
+	"log"
+	"os"
 )
+
 
 
 const API_URL = "http://113.140.71.252:9091/"
 //http://113.140.71.252:9091/xa_gj_mobile_provide/
+var info = log.New(os.Stdout,
+	"INFO: ",
+	log.Ldate|log.Ltime|log.Lshortfile)
 
 func pingPong(c *gin.Context){
 	c.JSON(http.StatusOK, gin.H{"message":"pong"})
@@ -24,9 +30,10 @@ func init(){
 
 func name(c *gin.Context){
 	name := c.Param("name")
-	fmt.Println(name)
+	info.Println(name)
+
 	val, ok := Users[name]
-	fmt.Println(ok)
+	info.Println(ok)
 	if(ok == true){
 		c.JSON(http.StatusOK, gin.H{"name":name, "age":val.Age})
 	}else{
@@ -44,14 +51,14 @@ func GetUsers(c *gin.Context) {
 }
 
 func post(c *gin.Context){
-	fmt.Println(c)
-	fmt.Println(*c)
+	info.Println(c)
+	info.Println(*c)
 	var json User
 	if c.BindJSON(&json) == nil {
-		fmt.Println(json)
+		info.Println(json)
 		Users[json.Name] = json
 		c.JSON(http.StatusOK, gin.H{"status": "added"})
-		fmt.Println(Users)
+		info.Println(Users)
 	}else {
 		c.JSON(http.StatusBadRequest, gin.H{"status": "error"})
 	}
@@ -72,7 +79,7 @@ func get_route_by_name(c *gin.Context){
 }
 
 func get_bus_provide(url string) ([]byte, error){
-	fmt.Println(url)
+	info.Println(url)
 	response, err := http.Get(url)
 	var contents []byte
 	if err != nil {
@@ -127,8 +134,8 @@ func get_route_by_id(c *gin.Context) {
 	}
 	upBus := upBusResponse.Get("data").MustArray()
 	downBus := downBusResponse.Get("data").MustArray()
-	fmt.Println(upBus)
-	fmt.Println(downBus)
+	info.Println(upBus)
+	info.Println(downBus)
 
 
 	var rtn ReturnData
@@ -169,6 +176,6 @@ func get_route_by_id(c *gin.Context) {
 		rtn.UpData = append(rtn.UpData, station)
 	}
 
-	fmt.Println(rtn)
+	info.Println(rtn)
 	c.JSON(http.StatusOK, rtn)
 }
